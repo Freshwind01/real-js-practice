@@ -46,3 +46,30 @@ function groupCat(products) {
     return acc;
                                                 },{})
                             }
+
+
+## Задача 1.3: Удаление дубликатов из массива объектов 🟡
+**Контекст: После слияния данных из разных источников появились дубликаты пользователей по email.
+
+**Задача:**
+
+const users = [
+  { id: 1, email: 'john@example.com', name: 'John' },
+  { id: 2, email: 'jane@example.com', name: 'Jane' },
+  { id: 3, email: 'john@example.com', name: 'Johnny' }, // дубликат
+  { id: 4, email: 'bob@example.com', name: 'Bob' },  
+  { id: 5, email: 'mary@example.com', name: 'Mary' },
+  { id: 6, email: 'bob@example.com', name: 'Bob' }, // дубликат
+  { id: 7, email: 'piter@example.com', name: 'Piter' }
+];
+
+// Оставить уникальные по email (первое вхождение)*/
+const seen= new Set()
+const uniqueUsers= users.filter(user => {
+    if (seen.has(user.email)) {
+        return false;
+    }
+    seen.add(user.email);
+    return true;
+})
+console.log(uniqueUsers);
