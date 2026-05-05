@@ -64,6 +64,7 @@ const users = [
 ];
 
 // Оставить уникальные по email (первое вхождение)*/
+//Решение:
 const seen= new Set()
 const uniqueUsers= users.filter(user => {
     if (seen.has(user.email)) {
@@ -73,3 +74,46 @@ const uniqueUsers= users.filter(user => {
     return true;
 })
 console.log(uniqueUsers);
+
+
+
+
+/*Задача 1.4: Фильтрация и сортировка списка товаров 🟢
+Контекст: Пользователь применил фильтры и сортировку в каталоге товаров.
+
+Задача:*/
+
+const products = [
+  { id: 1, name: 'Laptop Pro', category: 'Electronics', price: 1800, inStock: true },
+  { id: 2, name: 'Laptop Air', category: 'Electronics', price: 1200, inStock: false },
+  { id: 3, name: 'Mouse', category: 'Accessories', price: 50, inStock: true },
+  { id: 4, name: 'Keyboard', category: 'Accessories', price: 100, inStock: true },
+  { id: 5, name: 'Air Max', category: 'Electronics', price: 9000, inStock: false },
+  { id: 6, name: 'Chessmaster Notebook', category: 'Electronics', price: 1500, inStock: true },
+  { id: 7, name: 'Sonybook', category: 'Electronics', price: 2300, inStock: true },
+  { id: 8, name: 'HyundaiMouse', category: 'Electronics', price: 2300, inStock: true },
+  { id: 9, name: 'OppoMasterPhone', category: 'Electronics', price: 1300, inStock: true },
+];
+
+// Создать функцию: filterAndSort(products, filters, sortBy)
+
+const filters = { category: 'Electronics', inStock: true, minPrice: 1000 };
+const sortBy = 'price';
+//Решение:
+function filterAndSort(products, filters, sortBy) {
+  const result = products
+    .filter(item => item.category === filters.category)
+    .filter(item => item.inStock === filters.inStock)
+    .filter(item => item.price >= filters.minPrice);
+  
+  return result.sort((a, b) => {
+    if (sortBy === 'price') {
+      return a.price - b.price;
+    }
+    if (sortBy === 'name') {
+      return a.name.localeCompare(b.name);
+    }
+    return 0;
+  });
+}
+console.log(filterAndSort(products, filters, sortBy));
