@@ -117,3 +117,71 @@ function filterAndSort(products, filters, sortBy) {
   });
 }
 console.log(filterAndSort(products, filters, sortBy));
+
+
+/*Задача 1.5: Нормализация вложенных данных 🟡
+Контекст: API вернул вложенную структуру постов с комментариями, нужно нормализовать для state management.
+
+Задача:*/
+
+const posts = [
+  {
+    id: 1,
+    title: 'Post 1',
+    author: { id: 101, name: 'John' },
+    comments: [
+      { id: 201, text: 'Great!', author: { id: 102, name: 'Jane' } },
+      { id: 202, text: 'Nice', author: { id: 103, name: 'Bob' } },
+    ]
+  },
+  {
+    id: 2,
+    title: 'Post 2',
+    author: { id: 102, name: 'Jane' },
+    comments: [
+      { id: 203, text: 'Cool', author: { id: 101, name: 'John' } },
+    ]
+  }
+];
+
+// Нужно получить:
+// {
+//   posts: { 1: { id: 1, title: 'Post 1', authorId: 101, commentIds: [201, 202] }, ... },
+//   comments: { 201: { id: 201, text: 'Great!', authorId: 102 }, ... },
+//   users: { 101: { id: 101, name: 'John' }, ... }
+// }
+
+//Решение:
+
+function normalizePosts(posts) {
+  const result = {
+    posts: {},
+    comments: {},
+    users: {}
+  };
+
+for (let post of posts) {
+ result.users[post.author.id]={    // заполняем строку users
+  id:post.author.id,
+  name:post.author.name
+ };  
+ let comm=[];
+   for (const comment of post.comments) {
+    comm.push(comment.id);
+    result.comments[comment.id]={
+    id:comment.id,
+    text:comment.text,
+    authorId:comment.author.id, 
+    
+        }
+    
+   }
+  result.posts[post.id]={
+    id:post.id,
+    title:post.title,
+    authorId:post.author.id,
+    commentIds:comm,
+  }
+}
+  return result;
+}
