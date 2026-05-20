@@ -185,3 +185,29 @@ for (let post of posts) {
 }
   return result;
 }
+
+/*Задача 1.6: Поиск по массиву объектов 🟢
+Контекст: Реализовать поиск по имени и email в списке пользователей (как в поисковой строке).
+
+Задача:*/
+
+const users = [
+  { id: 1, name: 'John Doe', email: 'john@example.com' },
+  { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+  { id: 3, name: 'Bob Johnson', email: 'bob@company.com' },
+];
+
+// Функция: searchUsers(users, query)
+// query = 'john' должен найти John Doe и Bob Johnson
+function searchUsers(users,query) {
+
+query=query.toLowerCase();
+const result = users.filter(user=>user.name.toLowerCase().includes(query)||
+                            user.email.toLowerCase().includes(query));
+if (result.length > 0) return result;
+else return [];
+
+}
+
+
+console.log(searchUsers(users,'John'));
