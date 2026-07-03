@@ -10,7 +10,7 @@ const apiUsers = [
 //   { id: 1, fullName: 'John Doe', email: 'john@example.com', active: true },
 //   { id: 2, fullName: 'Jane Smith', email: 'jane@example.com', active: false },
 // ]
-//Решение:
+//Решение: :+1:
 function TransformUser(users) {
   return users.map(user => ({
     id: user.id,
