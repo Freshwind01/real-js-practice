@@ -10,7 +10,7 @@ const apiUsers = [
 //   { id: 1, fullName: 'John Doe', email: 'john@example.com', active: true },
 //   { id: 2, fullName: 'Jane Smith', email: 'jane@example.com', active: false },
 // ]
-//Решение: :+1:
+# Решение: 👀
 function TransformUser(users) {
   return users.map(user => ({
     id: user.id,
@@ -36,7 +36,7 @@ const products = [
 //   Clothing: [{ id: 2, name: 'Shirt', price: 50 }, { id: 4, name: 'Jeans', price: 80 }]
 // }
 
-//Решение:
+# Решение: 👀
 function groupCat(products) {
   return products.reduce((acc,currentObject) => {
   const key =currentObject.category;
@@ -64,7 +64,7 @@ const users = [
 ];
 
 // Оставить уникальные по email (первое вхождение)*/
-//Решение:
+# Решение: 👀
 const seen= new Set()
 const uniqueUsers= users.filter(user => {
     if (seen.has(user.email)) {
@@ -99,7 +99,8 @@ const products = [
 
 const filters = { category: 'Electronics', inStock: true, minPrice: 1000 };
 const sortBy = 'price';
-//Решение:
+
+# Решение: 👀
 function filterAndSort(products, filters, sortBy) {
   const result = products
     .filter(item => item.category === filters.category)
@@ -151,7 +152,7 @@ const posts = [
 //   users: { 101: { id: 101, name: 'John' }, ... }
 // }
 
-//Решение:
+# Решение: 👀
 
 function normalizePosts(posts) {
   const result = {
